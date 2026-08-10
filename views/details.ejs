@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Details</title>
+    <link rel="shortcut icon" type="image/png" href="https://res.cloudinary.com/dka765zib/image/upload/v1768458154/M_r14ldo.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head> 
+<body data-page="details">
+    <section class="section-nav">
+        <div class="logo">
+            <a href="/"><img src="https://res.cloudinary.com/dka765zib/image/upload/v1770177748/Mchoc_jjjfbr.png"></a>
+        </div>
+        
+        <a class="user-login icon"><i class="far fa-user"></i></a>
+        <a href="/cart" class="cart icon"><i class="fas fa-cart-shopping"></i>
+            <span class="cart-badge">0</span>
+        </a>
+    </section>
+    
+    <div class="navbar">
+        <div class="hamburger-menu">
+            <div class="line line-1"></div>
+            <div class="line line-2"></div>
+            <div class="line line-3"></div>
+        </div>
+        <nav class="nav-list-side">
+            <div class="menu">
+                <a href="/" class="navbar-link">Home</a>
+                <a href="/#products" class="navbar-link">Products</a>
+                <a href="/#about" class="navbar-link">About us</a>
+                <a href="/online-orders" class="navbar-link">Online orders</a>
+            </div>
+            <div class="social-media">
+                <a href="mailto:michele93saldana@gmail.com"> <i class="far fa-envelope"></i></a>
+                <a href="https://www.instagram.com/momento_tiramisu2025/" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+            </div>
+        </nav>
+    </div>
+
+    <div class="container">
+        <h2 class="mb-2">Secure checkout</h2>
+
+        <div class="row">
+            <div class="col-md-4 order-md-2 mb-4">
+                <h4 class="d-flex justify-content-between align-items-center mb-3">
+                    <span class="section-heading">Your cart</span>
+                </h4>
+                <ul class="list-group cart-list mb-3">
+                    <% cart.forEach(item => { %>
+                        <li class="list-group-item cart-container d-flex justify-content-between lh-condensed"
+                        data-id="<%= item.productId %>"  data-price="<%= item.price %>">
+                            <div class="cart-item-wrap">
+                                <h6 class="my-0 item-title"> <%= item.name %> </h6>
+                                <div class="cart-button">
+                                    <span class="trash"><i class="fas fa-trash"></i></span>
+                                    <span class="number"><%= item.quantity %></span>
+                                    <span class="plus">+</span>
+                                </div>
+                            </div>
+                            <span class="item-price"> $<%= (item.price * item.quantity).toFixed(2) %> </span>
+                        </li>
+                    <% }) %>
+                    <li class="list-group-item d-flex justify-content-between pt-4 pb-3 collection-options cart-summary-row">
+                        <label class="pick-up delivery-option-label">
+                            <input type="radio" name="radio" checked/>
+                            <span>Pick Up</span>
+                        </label>
+                        <label class="delivery delivery-option-label">
+                            <input type="radio" name="radio"/>
+                            <span>Delivery</span>
+                        </label>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between add-no-options cart-summary-row"></li>
+                    <li class="list-group-item d-flex justify-content-between add-delivery cart-summary-row"></li>
+                    
+                    <li class="list-group-item d-flex justify-content-between total-box cart-summary-row">
+
+                        <span>Total (AUD)</span><p class="total-amount" data-base-total="<%= total %>"> $<%= total %></p>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-end total-box cart-summary-row">
+                        <span class="surcharge-text">surcharge fee (2.2%)</span>
+                    </li>
+                </ul>
+                <button class="cart-btn shopping-btn">Continue shopping</button>
+
+            </div>
+            <div class="col-md-8 order-md-1">
+                <h4 class="mb-3 section-heading">Billing address</h4>
+                <form class="needs-validation" novalidate>
+                    <div class="row-details">
+                        <div class="mb-3">
+                            <label for="fullName">Full name</label>
+                            <input type="text" class="form-control" name="name" id="fullName" required value="<%= details ? details.name : '' %>" />
+                            <div class="invalid-feedback">
+                                Valid full name is required.
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="phoneNumber">Phone number</label>
+                            <input type="text" class="form-control" name="phone" id="phoneNumber" required value="<%= details ? details.phone : '' %>" />
+                            <div class="invalid-feedback">
+                                Valid phone number is required.
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" id="email" value="<%= email %>" disabled>
+                            <div class="invalid-feedback">
+                                Please enter a valid email address for shipping updates.
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="address">Address</label>
+                            <input type="text" class="form-control" name="address" id="address" autocomplete="street-address" placeholder="Start typing your address..." required value="<%= details ? details.address : '' %>" />
+                            <div class="invalid-feedback">
+                                Please enter your shipping address.
+                            </div>
+                        </div>
+
+                        <div class="row-country w-87.7">
+                            <div class="col-md-3 mb-3 suburb-col">
+                                <label for="suburb">Suburb</label>
+                                <input type="text" autocomplete="off" class="form-control" placeholder="" name="suburb" id="suburb" required value="<%= details ? details.suburb : '' %>">
+                                <div id="suburbSuggestions"></div>
+                                <div class="invalid-feedback">
+                                Suburb is required.
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-3 pl-0">
+                                <label for="postcode">Postcode</label>
+                                <input type="text" autocomplete="off" class="form-control" placeholder="" id="postcode" required value="<%= details ? details.postcode : '' %>">
+                                <div class="invalid-feedback">
+                                Zip code required.
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-3 pr-0 pl-0">
+                                <label for="country">Country</label>
+                                <select class="custom-select d-block w-95 item-title" id="country" required value="<%= details ? details.country : '' %>">
+                                    <option value="">Choose...</option>
+                                    <option>Australia</option>
+                                </select>
+                                <div class="invalid-feedback">
+                                    Please select a valid country.
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                
+                                <label for="city">City</label>
+                                <select class="custom-select d-block w-95 item-title" id="city" required value="<%= details ? details.city : '' %>">
+                                    <option value="">Choose...</option>
+                                    <option>Sydney</option>
+                                </select>
+                                <div class="invalid-feedback">
+                                    Please provide a valid state.
+                                </div>
+                            </div>
+                        </div>
+                    <hr class="mb-4">
+
+                    <dialog id="confirmModal">
+                        <div>
+                            <h3>Important Delivery information:</h3>
+                            <ul>
+                                <li><strong>Standard timeframe:</strong> 48 hours from order placement.</li>
+                                <li><strong>Need it sooner?</strong> Do not order online. You must email your request directly to <a href="mailto:orders@momentotiramisu.com.au">orders@momentotiramisu.com.au</a></li>
+                                <li><strong>Terms:</strong> By clicking proceed, you acknowledge and accept these terms.</li>
+                            </ul>
+                            <div class="modal-buttons">
+                                <button value="cancel" id="cancelBtn">Cancel</button>
+                                <button value="proceed" id="proceedBtn">Proceed</button>
+                            </div>
+                        </div>
+                    </dialog>
+                    
+                    <h4 class="mb-3 payment-text"></h4>
+                    <button class="btn-lg btn-block mt-3 payments-btn" type="submit">Choose payment options</button>
+
+                    <div class="payment-options is-hidden">
+                        <div class="wrapper">
+                            <button class="pay-button">
+                                <span>Pay with Card</span>
+                            </button>
+                        </div>
+                        
+                        <div class="wrapper">
+                            <div id="google-pay"></div>
+                        </div> 
+
+                         <div class="wrapper">
+                            <div class="apple-pay-button apple-pay-button-black"></div>
+                        </div> 
+                    </div>
+                    <div id="card-container"></div> 
+                    <button class="btn-lg btn-block mt-3 place-order checkout-btn" type="submit">Place your order</button>
+
+
+
+                    
+                    <input type="hidden" id="appId" value="<%= appId %>"> 
+                    <input type="hidden" id="locationId" value="<%= locationId %>">
+
+                    <hr class="mb-4">
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/google-libphonenumber/3.2.44/libphonenumber.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://sandbox.web.squarecdn.com/v1/square.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=<%= googleMapsApiKey %>&libraries=places&callback=initAddressAutocomplete" async defer></script>
+    <script src="script.js"></script>
+</body>
+</html>

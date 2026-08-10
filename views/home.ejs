@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Momento</title>
+    <link rel="shortcut icon" type="image/png" href="https://res.cloudinary.com/dka765zib/image/upload/v1768458154/M_r14ldo.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="/style.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+</head>
+<body data-page="home">
+    <div class="hero-spacer"></div>
+    <section class="background">
+        <div class="page-fade">
+            <video autoplay muted loop playsinline>
+                <source src="https://res.cloudinary.com/dka765zib/video/upload/v1773279618/TIRAMISU_video_w30xyq.mp4" type="video/mp4">
+            </video> 
+            <div class="video-overlay"></div>
+
+            <section class="section-nav">
+                <div class="logo">
+                    <img src="https://res.cloudinary.com/dka765zib/image/upload/v1768458153/Mmomento_axmp9f.png">
+                </div>
+                <a class="user-login icon"><i class="far fa-user"></i></a>
+                <a href="/cart" class="cart icon">
+                    <i class="fas fa-cart-shopping"></i>
+                    <span class="cart-badge">0</span>
+                </a>
+            </section>
+
+            <section class="section-momento">
+                    <h3 class="banner">Feels like home!</h3>   
+            </section>
+        </div>
+    </section>
+
+    <div class="navbar">
+        <div class="hamburger-menu">
+            <div class="line line-1"></div>
+            <div class="line line-2"></div>
+            <div class="line line-3"></div>
+        </div>
+        <nav class="nav-list-side">
+            <div class="menu">
+                <a href="/" class="navbar-link">Home</a>
+                <a href="/#products" class="navbar-link">Products</a>
+                <a href="/#about" class="navbar-link">About us</a>
+                <a href="/online-orders" class="navbar-link">Online orders</a>
+            </div>
+            <div class="social-media">
+                <a href="mailto:michele93saldana@gmail.com"> <i class="far fa-envelope"></i></a>
+                <a href="https://www.instagram.com/momento_tiramisu2025/" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+            </div>
+        </nav>
+    </div>
+
+    <section class="gallery" id="products">
+        <h1 class="section-title-products section-title">Our products</h1>
+
+        <div class="btns-container">
+            <button class="btn btn-1" data-aos="zoom-in-up" data-aos-delay="200">Single-serve tiramisu</button>
+            <button class="btn btn-2" data-aos="zoom-in-up" data-aos-delay="300">Tray options for businesses</button>
+        </div>
+        
+        <div class="sliders-container">
+            <div class="swiper image-slider">
+                <div class="swiper-wrapper">
+                    <% products.tiramisu.forEach(product => { %>
+                        <div class="swiper-slide">
+                            <img src="<%= product.image %>" alt="<%= product.name %>">
+                        </div>
+                    <% })%> 
+                </div>
+            </div>
+            <div class="image-arrows">
+                <div class="swiper-button-prev image-prev"></div>
+                <div class="swiper-button-next image-next"></div>  
+            </div>
+
+            <div class="swiper text-slider">
+                <div class="swiper-wrapper">
+                    <% products.tiramisu.forEach(product => { %>
+                        <div class="swiper-slide">
+                            <p>
+                                <%= product.name %>:<br>
+                                <%= product.description %><br>
+                                $<%= product.price %>
+                            </p>
+                        </div>
+                    <% })%>
+                </div>
+            </div>
+            
+            <div class="swiper tray-slider">
+                <div class="swiper-wrapper">
+                    <% products.trays.forEach(product => { %>
+                        <div class="swiper-slide">
+                            <img src="<%= product.image %>" alt="<%= product.name %>">
+                        </div>
+                    <% })%>                   
+                </div>
+            </div>
+            <div class="tray-arrows">
+                <div class="swiper-button-prev tray-prev"></div>
+                <div class="swiper-button-next tray-next"></div>                
+            </div>
+
+            <div class="swiper tray-text-slider">
+                <div class="swiper-wrapper">
+                    <% products.trays.forEach(product => { %>
+                        <div class="swiper-slide">
+                            <p>
+                                <%= product.name %>:<br>
+                                <%= product.description %><br>
+                                $<%= product.price %>
+                        </div>
+                    <% })%>
+                </div>
+            </div>
+        </div>
+        <h1 class="products-title"><a href="/online-orders">SHOP OUR PRODUCTS</a></h1>
+    </section>
+
+    <section class="about-us" id="about">
+        <svg viewBox="0 0 1440 200" preserveAspectRatio="none" class="footer-wave">
+            <path d="M0,100 C360,-50 1080,250 1440,100 L1440,200 L0,200 Z" fill="var(--Chocolate)"></path>
+        </svg>
+        <div class="contact-container">
+            <h1 class="section-title">Our location</h1>
+            <div id="map" class="map"></div>
+            <div class="info">
+                <h2 class="htitle">Monday - Friday: 6am - 4pm</h2>
+                <div class="info-paragraph">
+                    <br><span>Address:</span><a href="https://www.google.com/maps/place/7%2F189+Great+N+Rd,+Five+Dock+NSW+2046/@-33.8663045,151.1093974,14z/data=!4m5!3m4!1s0x6b12a55260f0f00d:0x9c3916b2bfd6e696!8m2!3d-33.8663045!4d151.1299968?entry=ttu&g_ep=EgoyMDI2MDEwNy4wIKXMDSoKLDEwMDc5MjA3M0gBUAM%3D" target="_blank">Click here to get directions</a>
+                    <br><span>Telephone number:</span><a href="tel:0451871912">0451 871 912</a>
+                    <br><span>Email address:</span><a href="mailto:orders@momentotiramisu.com.au">orders@momentotiramisu.com.au</a> 
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="footer">
+        <div class="footer-content">
+            <p class="copyright"><i class="fa-regular fa-copyright"></i>Momento. All rights reserved.</p>
+        </div>
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12/modules/effects/gl/swiper-gl.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

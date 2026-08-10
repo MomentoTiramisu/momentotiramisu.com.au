@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check-out</title>
+    <link rel="shortcut icon" type="image/png" href="https://res.cloudinary.com/dka765zib/image/upload/v1768458154/M_r14ldo.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>   
+<body data-page="cart">
+    <section class="section-nav">
+        <div class="logo">
+            <a href="/"><img src="https://res.cloudinary.com/dka765zib/image/upload/v1770177748/Mchoc_jjjfbr.png"></a>
+        </div>
+        <a class="user-login icon"><i class="far fa-user"></i></a>
+        <a href="/cart" class="cart icon"><i class="fas fa-cart-shopping"></i>
+            <span class="cart-badge">0</span>
+        </a>
+    </section>
+    <div class="navbar">
+        <div class="hamburger-menu">
+            <div class="line line-1"></div>
+            <div class="line line-2"></div>
+            <div class="line line-3"></div>
+        </div>
+        <nav class="nav-list-side">
+            <div class="menu">
+                <a href="/" class="navbar-link">Home</a>
+                <a href="/#products" class="navbar-link">Products</a>
+                <a href="/#about" class="navbar-link">About us</a>
+                <a href="/online-orders" class="navbar-link">Online orders</a>
+            </div>
+            <div class="social-media">
+                <a href="mailto:michele93saldana@gmail.com"> <i class="far fa-envelope"></i></a>
+                <a href="https://www.instagram.com/momento_tiramisu2025/" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+            </div>
+        </nav>
+    </div>
+
+    
+    <div class="checkout-section">
+        <p class="total-label">Total: $ <span class="total-amount"><%= total %></span></p>
+        <div class="btns-section">
+            <button class="cart-btn checkout-btn">Proceed to Checkout</button>
+            <button class="cart-btn shopping-btn">Continue shopping</button>
+        </div>
+    </div>
+
+
+    <div class="toggle-section">
+        <section class="cart-products">
+            <% cart.forEach(item => { %>
+                <div class="cart-container" data-id="<%= item.productId %>"  data-price="<%= item.price %>">
+                    <div class="cart-image">
+                        <img src="<%= item.imageURL %>" alt="<%= item.title %>">
+                    </div>
+                    <div class="cart-item-description">
+                        <h3 class="item-title"><%= item.name %></h3>
+                        <p class="item-description"><%= item.description %></p>
+                        <div class="trash-subtotal">
+                            <div class="cart-button">
+                                <span class="trash"><i class="fas fa-trash"></i></span>
+                                <span class="number"><%= item.quantity %></span>
+                                <span class="plus">+</span>
+                            </div>
+                            <p class="item-price">$<%= (item.price * item.quantity).toFixed(2) %></p>
+                        </div>
+                    </div>
+                </div>
+            <% }) %>
+        </section>
+    </div>
+</body>
+    <script src="script.js"></script>
+</html>

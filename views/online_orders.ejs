@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>orders</title>
+    <link rel="shortcut icon" type="image/png" href="https://res.cloudinary.com/dka765zib/image/upload/v1768458154/M_r14ldo.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<body data-page="online-orders" class="orders-page">
+    <section class="section-nav">
+        <div class="logo">
+            <a href="/"><img src="https://res.cloudinary.com/dka765zib/image/upload/v1770177748/Mchoc_jjjfbr.png"></a>
+        </div>
+        <a class="user-login icon"><i class="far fa-user"></i></a>
+        <a href="/cart" class="cart icon"><i class="fas fa-cart-shopping"></i>
+            <span class="cart-badge">0</span>
+        </a>
+    </section>
+    <div class="navbar">
+        <div class="hamburger-menu">
+            <div class="line line-1"></div>
+            <div class="line line-2"></div>
+            <div class="line line-3"></div>
+        </div>
+        <nav class="nav-list-side">
+            <div class="menu">
+                <a href="/" class="navbar-link">Home</a>
+                <a href="/#products" class="navbar-link">Products</a>
+                <a href="/#about" class="navbar-link">About us</a>
+                <a href="/online-orders" class="navbar-link">Online orders</a>
+            </div>
+            <div class="social-media">
+                <a href="mailto:michele93saldana@gmail.com"> <i class="far fa-envelope"></i></a>
+                <a href="https://www.instagram.com/momento_tiramisu2025/" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+            </div>
+        </nav>
+    </div>
+    <section class="online-products">
+        <div class="products-container">
+            <% products.tiramisu.forEach(product => { %>
+                <div class="product-card">
+                    <div class="card-header">
+                        <img src="<%= product.image %>" alt="<%= product.name %>">
+                    </div>
+                    <svg class="card-wave" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+                        <defs>
+                            <path id="gentle-wave-tiramisu" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+                        </defs>
+                        <g class="parallax">
+                            <use xlink:href="#gentle-wave-tiramisu" x="48" y="0" fill="rgba(76, 37, 11, 0.7)" />
+                            <use xlink:href="#gentle-wave-tiramisu" x="48" y="3" fill="rgba(76, 37, 11, 0.5)" />
+                            <use xlink:href="#gentle-wave-tiramisu" x="48" y="5" fill="rgba(76, 37, 11, 0.3)" />
+                            <use xlink:href="#gentle-wave-tiramisu" x="48" y="7" fill="var(--Chocolate)" />
+                        </g>
+                    </svg>
+                    <div class="card-footer">
+                        <p class="card-title">
+                            <%= product.name %> : $<%= product.price %>
+                        </p>
+                        <div class="btns-card">
+                            <div class="counter-button">
+                                <span class="minus">−</span>
+                                <span class="number">0</span>
+                                <span class="plus">+</span>
+                            </div>
+                            <button class="add-btn">Add to cart</button>
+                        </div>
+                    </div>
+                </div>
+            <% })%> 
+
+            <% products.trays.forEach(product => { %>
+                <div class="product-card">
+                    <div class="card-header">
+                        <img src="<%= product.image %>" alt="<%= product.name %>">
+                    </div>
+                    <svg class="card-wave" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+                        <defs>
+                            <path id="gentle-wave-trays" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+                        </defs>
+                        <g class="parallax">
+                            <use xlink:href="#gentle-wave-trays" x="48" y="0" fill="rgba(76, 37, 11, 0.7)" />
+                            <use xlink:href="#gentle-wave-trays" x="48" y="3" fill="rgba(76, 37, 11, 0.5)" />
+                            <use xlink:href="#gentle-wave-trays" x="48" y="5" fill="rgba(76, 37, 11, 0.3)" />
+                            <use xlink:href="#gentle-wave-trays" x="48" y="7" fill="var(--Chocolate)" />
+                        </g>
+                    </svg>
+                    <div class="card-footer">
+                        <p class="card-title">
+                            <%= product.name %> : $<%= product.price %>
+                        </p>
+                        <div class="btns-card">
+                            <div class="counter-button">
+                                <span class="minus">−</span>
+                                <span class="number">0</span>
+                                <span class="plus">+</span>
+                            </div>
+                            <button class="add-btn">Add to cart</button>
+                        </div>
+                    </div>
+                </div>
+            <% })%> 
+            
+            
+        </div>
+    </section>
+    <script src="script.js"></script>
+</body>
+</html>

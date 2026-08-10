@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="shortcut icon" type="image/png" href="https://res.cloudinary.com/dka765zib/image/upload/v1768458154/M_r14ldo.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+</head>
+<body data-page="login">
+    <section class="section-nav">
+        <div class="logo">
+            <a href="/"><img src="https://res.cloudinary.com/dka765zib/image/upload/v1770177748/Mchoc_jjjfbr.png"></a>
+        </div>
+        <a class="user-login icon"><i class="far fa-user"></i></a>
+        <a href="/cart" class="cart icon"><i class="fas fa-cart-shopping"></i>
+            <span class="cart-badge">0</span>
+        </a>
+    </section>
+    <div class="navbar">
+        <div class="hamburger-menu">
+            <div class="line line-1"></div>
+            <div class="line line-2"></div>
+            <div class="line line-3"></div>
+        </div>
+        <nav class="nav-list-side">
+            <div class="menu">
+                <a href="/" class="navbar-link">Home</a>
+                <a href="/#products" class="navbar-link">Products</a>
+                <a href="/#about" class="navbar-link">About us</a>
+                <a href="/online-orders" class="navbar-link">Online orders</a>
+            </div>
+            <div class="social-media">
+                <a href="mailto:michele93saldana@gmail.com"> <i class="far fa-envelope"></i></a>
+                <a href="https://www.instagram.com/momento_tiramisu2025/" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+            </div>
+        </nav>
+    </div>
+
+
+    <main>        
+        <div class="container">
+            <div class="row">
+                <div class="swiperlogin mySwiperLogin">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img src="https://res.cloudinary.com/dka765zib/image/upload/v1785718346/caramel_zo9uhh.jpg" alt="">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="https://res.cloudinary.com/dka765zib/image/upload/v1775978593/1W2A2835_websize_r94ovk.jpg" alt="">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="https://res.cloudinary.com/dka765zib/image/upload/v1775977594/1W2A3305_1_djx6r9.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+
+                <div class="sign-in-block" id="sign-in" aria-labelledby="sign-in-tab">
+                    <h1 class="text-center">Welcome Back!</h1>
+                    <form class="sign-in-form">
+                        <div class="email-sign">
+                            <label for="sign-in-email">Email adress</label>
+                            <input class="form-control"  type="email" id="sign-in-email" required placeholder="Enter email" />
+                        </div>
+                
+                        <div class="passw-sign">
+                            <label for="sign-in-password">Password</label>
+                            <div class="input-container">
+                                <input class="form-control" type="password" id="sign-in-password" required placeholder="Password" />
+                                <i class="fa-solid fa-eye toggle-password"></i>
+                            </div>
+                            <div class="options">
+                                <div class="check">
+                                    <input type="checkbox" id="signCheckbox">
+                                    <label for="signCheckbox">Keep Me Signed In</label>
+                                </div>
+                                <h3 class="forgot-pasw"><a href="#">Forgot Password?</a></h3>
+                            </div>
+                        </div>
+
+                        <dialog id="forgotModal">
+                            <div class="modal-logo-wrapper">
+                                <a><img src="https://res.cloudinary.com/dka765zib/image/upload/v1770177748/Mchoc_jjjfbr.png"></a>
+                            </div>
+                            <div class="dialog-box">
+                                <h1>Forgot your password?</h1>
+                                <p>We received a request to reset your password.</p>
+                                <p>To complete your request, click the button below:</p>
+                                <button class="reset-btn" value="reset" id="resetPasw">Reset Password</button>
+                                <p class="small-text">For your security, this link will expire in 10 minutes.</p>
+                            </div>
+                        </dialog>
+                                        
+                        <button class="form-btn">Login</button>
+                        <h2 class="account-text">Don't have an account? <a id="login-url" href="/register">Create Account</a></h2>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12/modules/effects/gl/swiper-gl.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
