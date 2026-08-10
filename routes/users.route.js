@@ -112,7 +112,7 @@ router.post('/create-account', createAccountLimiter, doubleCsrfProtection, async
                 <h2>Welcome to Momento Tiramisu!</h2> 
                 <p>Thank you for creating an account.</p>
                 <p>Please click the link below to verify your email address:</p>
-                <a href="http://${process.env.BASE_URL}/users/verify/${verificationToken}">Verify my account</a>
+                <a href="${process.env.BASE_URL}/users/verify/${verificationToken}">Verify my account</a>
                 <p>If you did not create an account, please ignore this email.</p>
             `
         };        
