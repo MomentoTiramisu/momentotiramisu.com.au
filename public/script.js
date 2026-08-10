@@ -1195,7 +1195,7 @@ document.addEventListener('DOMContentLoaded', () =>{
                             className: "custom-toast",
                             backgroundColor: "#fff8db",
                         }).showToast();
-                        setTimeout(() => window.location.href = data.redirectURL, 3000);
+                        setTimeout(() => window.location.href = data.redirectURL, 1000);
                     } else {
                         Toastify({
                             text: "This email is already in use. Please try again.",
