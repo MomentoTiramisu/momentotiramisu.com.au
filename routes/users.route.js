@@ -193,7 +193,7 @@ router.post('/forgot-password', forgotLimiter, doubleCsrfProtection, async (req,
         if(!token){
             return res.status(500).json({ error: "Sorry token expired. Try again" });
         }
-        const resetLink = `http://${process.env.BASE_URL}/users/reset-password/${token}` 
+        const resetLink = `${process.env.BASE_URL}/users/reset-password/${token}` 
         
         const mailToReset = {
             from: '"Momento Orders" <orders@momentotiramisu.com.au>',
