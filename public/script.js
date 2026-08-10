@@ -478,14 +478,14 @@ document.addEventListener('DOMContentLoaded', () =>{
         function applyDeliveryFee(){
             const addDelivery = document.querySelector('.add-delivery');
             if(!addDelivery) return; 
-            addDelivery.textContent = ''; 
-
-            const total = document.querySelector('.total-amount').dataset.baseTotal; 
-
-            if(currentPage !== 'details') return;
+            addDelivery.textContent = '';  
 
             const totalEl = document.querySelector('.total-amount');
+            if(!totalEl) return;
+
+            const total = totalEl.dataset.baseTotal;
             
+            if(currentPage !== 'details') return;
 
             if(parseFloat(total) === 0){
                 addDelivery.textContent = '';
@@ -494,6 +494,8 @@ document.addEventListener('DOMContentLoaded', () =>{
                 document.querySelector('.payments-btn').classList.add('is-hidden');
                 document.querySelector('.payment-text').textContent = 'No payment options available'
                 document.querySelector('.text-muted').textContent = 'Your cart is empty'
+                document.querySelector('.place-order').style.display = 'none';
+                document.getElementById('card-container').style.display = 'none';   
                 return 0; 
             }
             

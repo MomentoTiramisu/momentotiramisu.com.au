@@ -4,13 +4,13 @@ const helmetConfig = helmet({
     contentSecurityPolicy: {
         directives: {
             defaultSrc: [ "'self'" ],
-            scriptSrc: [ "'self'", "https://code.jquery.com", "https://cdn.jsdelivr.net", "https://unpkg.com", "https://sandbox.web.squarecdn.com", "https://cdnjs.cloudflare.com", "https://maps.googleapis.com", "https://pay.google.com" ],
-            styleSrc: [ "'self'", "'unsafe-inline'", "https://code.jquery.com", "https://cdn.jsdelivr.net", "https://unpkg.com", "https://sandbox.web.squarecdn.com", "https://cdnjs.cloudflare.com" ],
+            scriptSrc: [ "'self'", "https://code.jquery.com", "https://cdn.jsdelivr.net", "https://unpkg.com", "https://sandbox.web.squarecdn.com", "https://web.squarecdn.com", "https://cdnjs.cloudflare.com", "https://maps.googleapis.com", "https://pay.google.com" ],
+            styleSrc: [ "'self'", "'unsafe-inline'", "https://code.jquery.com", "https://cdn.jsdelivr.net", "https://unpkg.com", "https://sandbox.web.squarecdn.com", "https://web.squarecdn.com", "https://cdnjs.cloudflare.com" ],
             imgSrc: [ "'self'", "data:", "https://res.cloudinary.com", "https://*.tile.openstreetmap.org", "https://unpkg.com", "https://sandbox.web.squarecdn.com", "https://maps.gstatic.com", "https://www.gstatic.com" ],
             mediaSrc: [ "'self'", "https://res.cloudinary.com" ],
             fontSrc: [ "'self'", "https://cdnjs.cloudflare.com", "https://fonts.gstatic.com" ],
-            connectSrc: [ "'self'", "https://sandbox.web.squarecdn.com", "https://pci-connect.squareupsandbox.com", "https://*.squareup.com", "https://*.squareupsandbox.com", "https://maps.googleapis.com", "https://google.com", "https://www.google.com", "https://pay.google.com" ],
-            frameSrc: [ "'self'", "https://sandbox.web.squarecdn.com", "https://pay.google.com" ]
+            connectSrc: [ "'self'", "https://sandbox.web.squarecdn.com", "https://pci-connect.squareupsandbox.com", "https://*.squareup.com", "https://*.squareupsandbox.com", "https://web.squarecdn.com", "https://connect.squareup.com", "https://maps.googleapis.com", "https://google.com", "https://www.google.com", "https://pay.google.com" ],
+            frameSrc: [ "'self'", "https://sandbox.web.squarecdn.com", "https://web.squarecdn.com", "https://pay.google.com" ]
         }
     }
 });
