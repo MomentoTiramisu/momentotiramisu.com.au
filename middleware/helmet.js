@@ -9,8 +9,8 @@ const helmetConfig = helmet({
             imgSrc: [ "'self'", "data:", "https://res.cloudinary.com", "https://*.tile.openstreetmap.org", "https://unpkg.com", "https://sandbox.web.squarecdn.com", "https://web.squarecdn.com", "https://maps.gstatic.com", "https://www.gstatic.com" ],
             mediaSrc: [ "'self'", "https://res.cloudinary.com" ],
             fontSrc: [ "'self'", "https://cdnjs.cloudflare.com", "https://fonts.gstatic.com" ],
-            connectSrc: [ "'self'", "https://sandbox.web.squarecdn.com", "https://pci-connect.squareupsandbox.com", "https://*.squareup.com", "https://*.squareupsandbox.com", "https://web.squarecdn.com", "https://connect.squareup.com", "https://maps.googleapis.com", "https://google.com", "https://www.google.com", "https://pay.google.com" ],
-            frameSrc: [ "'self'", "https://sandbox.web.squarecdn.com", "https://web.squarecdn.com", "https://pay.google.com" ]
+            connectSrc: [ "'self'", "https://sandbox.web.squarecdn.com", "https://pci-connect.squareupsandbox.com", "https://*.squareup.com", "https://*.squareupsandbox.com", "https://web.squarecdn.com", "https://connect.squareup.com", "https://maps.googleapis.com", "https://google.com", "https://www.google.com", "https://pay.google.com", "https://*.apple-pay.apple.com" ],
+            frameSrc: [ "'self'", "https://sandbox.web.squarecdn.com", "https://web.squarecdn.com", "https://pay.google.com", "https://*.squareup.com", "https://*.squareupsandbox.com" ]
         }
     }
 });
