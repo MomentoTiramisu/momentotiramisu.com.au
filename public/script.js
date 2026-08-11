@@ -557,9 +557,19 @@ document.addEventListener('DOMContentLoaded', () =>{
         
     
         async function initializeSquare() {
-            const appId = document.querySelector('#appId').value;
-            const locationId = document.querySelector('#locationId').value;
-            const payments = await Square.payments(appId, locationId);
+            
+        const appIdInput = document.getElementById('appId');
+        const locationIdInput = document.getElementById('locationId');
+
+        if (!appIdInput || !locationIdInput) {
+            console.error("Square initialization failed: Hidden input elements missing from DOM.");
+            return;
+        }
+
+        const appId = appIdInput.value.trim();
+        const locationId = locationIdInput.value.trim();
+
+        const payments = await Square.payments(appId, locationId);
 
             let suburbsData = [];
 
