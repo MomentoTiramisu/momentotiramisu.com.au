@@ -554,7 +554,7 @@ document.addEventListener('DOMContentLoaded', () =>{
 
 
         let paymentRequest = null; 
-        
+        let applePay = null;
     
         async function initializeSquare() {
             
@@ -793,12 +793,10 @@ document.addEventListener('DOMContentLoaded', () =>{
 
                 try{
                     if(window.ApplePaySession){
-                        const applePay = await payments.applePay(paymentRequest, {
-                            target: '#apple-pay-button',
+                        applePay = await payments.applePay(paymentRequest, {
                             buttonType: 'short',
                             buttonColor: 'white'
-                            });
-                        return applePay;
+                        });
                     }
                 } catch (e){
                     console.error('Apple Pay unavailable:', e);
@@ -820,19 +818,22 @@ document.addEventListener('DOMContentLoaded', () =>{
                 })
 
                 const applePayBtn = document.getElementById('apple-pay-button');
-                applePayBtn.addEventListener('click', async () => {
-                    if(!validateFields()) return;
-                    try{
-                        const results = await applePay.tokenize();
-                        if(results.status === 'OK'){
-                            dryPayment(results.token);
-                        }else{
-                            console.error('payment failed or cancelled', results.errors)
+                if (applePayBtn && applePay) {
+                    applePayBtn.addEventListener('click', async () => {
+                        if(!validateFields()) return;
+                        try{
+                            const results = await applePay.tokenize();
+                            if(results.status === 'OK'){
+                                dryPayment(results.token);
+                            }else{
+                                console.error('payment failed or cancelled', results.errors)
+                            }
+                        } catch(tokenizeError){
+                            console.error('tokenization failed', tokenizeError);
                         }
-                    } catch(tokenizeError){
-                        console.error('tokenization failed', tokenizeError);
-                    }
-                })
+                    })
+                }
+                
                 
                 placeOrder.addEventListener('click', async (e) => {
                     e.preventDefault(); 
