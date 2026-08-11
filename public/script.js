@@ -788,7 +788,7 @@ document.addEventListener('DOMContentLoaded', () =>{
                             buttonType: 'short',
                             buttonColor: 'white'
                             });
-                        await applePay.attach('.apple-pay-button');
+                        return applePay;
                     }
                 } catch (e){
                     console.error('Apple Pay unavailable:', e);
