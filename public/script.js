@@ -779,18 +779,18 @@ document.addEventListener('DOMContentLoaded', () =>{
                     buttonType: 'short',
                     buttonColor: 'white'
                 });
-                const applePay = await payments.applePay(paymentRequest, {
-                    buttonType: 'short',
-                    buttonColor: 'white'
-                    });
                 await googlePay.attach('#google-pay');
 
                 try{
                     if(window.ApplePaySession){
+                        const applePay = await payments.applePay(paymentRequest, {
+                            buttonType: 'short',
+                            buttonColor: 'white'
+                            });
                         await applePay.attach('.apple-pay-button');
                     }
                 } catch (e){
-                    console.error(e);
+                    console.error('Apple Pay unavailable:', e);
                 }
 
 
