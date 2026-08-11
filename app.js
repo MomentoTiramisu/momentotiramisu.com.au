@@ -29,7 +29,7 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views')); 
 
 app.use(express.static(path.join(__dirname, 'public'))); 
-app.use('/.well-known', express.static(path.join(__dirname, '.well-known')))
+app.use('/.well-known', express.static(path.join(__dirname, '.well-known')));
 app.use(express.json()); 
 
 app.use(helmetConfig);
