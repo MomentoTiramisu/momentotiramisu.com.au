@@ -784,6 +784,7 @@ document.addEventListener('DOMContentLoaded', () =>{
                 try{
                     if(window.ApplePaySession){
                         const applePay = await payments.applePay(paymentRequest, {
+                            target: '#apple-pay-button',
                             buttonType: 'short',
                             buttonColor: 'white'
                             });
@@ -808,11 +809,19 @@ document.addEventListener('DOMContentLoaded', () =>{
                     dryPayment(results.token); 
                 })
 
-                const applePayBtn = document.querySelector('.apple-pay-button');
+                const applePayBtn = document.getElementById('apple-pay-button');
                 applePayBtn.addEventListener('click', async () => {
                     if(!validateFields()) return;
-                    const results = await applePay.tokenize();
-                    dryPayment(results.token);
+                    try{
+                        const results = await applePay.tokenize();
+                        if(results.status === 'OK'){
+                            dryPayment(results.token);
+                        }else{
+                            console.error('payment failed or cancelled', results.errors)
+                        }
+                    } catch(tokenizeError){
+                        console.error('tokenization failed', tokenizeError);
+                    }
                 })
                 
                 placeOrder.addEventListener('click', async (e) => {
