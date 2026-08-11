@@ -797,7 +797,6 @@ document.addEventListener('DOMContentLoaded', () =>{
                             buttonType: 'short',
                             buttonColor: 'white'
                         });
-                        console.log('applePay object:', applePay)
                     }
                 } catch (e){
                     console.error('Apple Pay unavailable:', e);
