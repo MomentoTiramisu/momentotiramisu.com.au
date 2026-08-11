@@ -1488,6 +1488,13 @@ dialog::backdrop {
     border-radius: 4px;
     transition: background-color 0.2s;
 }
+#apple-pay-button {
+  display: block !important;
+  visibility: visible !important;
+  box-sizing: border-box !important;
+  min-height: 4rem !important; /* Apple's absolute required height minimum */
+  width: 100% !important;
+}
 .pay-button:hover{
     background-color: #3c4043;
 }
