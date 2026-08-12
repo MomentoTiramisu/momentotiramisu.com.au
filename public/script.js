@@ -1217,7 +1217,7 @@ document.addEventListener('DOMContentLoaded', () =>{
                     return; 
                 }
                 const csrfToken = await getCsrfToken();
-                document.querySelector('.form-btn').style.backgroundColor = '#4c250b';
+                document.querySelector('.form-btn').classList.add('change-color');
 
                 fetch('/users/create-account', { 
                     method: 'POST',
@@ -1240,6 +1240,7 @@ document.addEventListener('DOMContentLoaded', () =>{
                         }).showToast();
                         setTimeout(() => window.location.href = data.redirectURL, 3000);
                     } else {
+                        document.querySelector('.form-btn').classList.remove('change-color');
                         Toastify({
                             text: "This email is already in use. Please try again.",
                             duration: 2000,
