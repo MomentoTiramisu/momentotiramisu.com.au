@@ -1053,10 +1053,10 @@ html{
     width: 25rem;
     z-index: 101;
 }
-.form-btn {
+[data-page='register'] .form-btn {
     transition: background-color 0.2s ease;
 }
-.form-btn.change-color {
+[data-page='register'] .form-btn.change-color {
     background-color: var(--Chocolate);
 }
 .dialog-box{
