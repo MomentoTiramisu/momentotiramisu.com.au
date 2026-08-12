@@ -663,6 +663,25 @@ document.addEventListener('DOMContentLoaded', () =>{
                     inputs.forEach(input =>{
                         input.classList.add('red');
                     })
+                    if(!validateName(name) || !validatePhone(phone)){
+                        Toastify({
+                            text: "Sorry your name or phone are not valid. Please make sure to enter full name",
+                            duration: 3000,
+                            gravity: "top",
+                            position: "center",
+                            className: "custom-toast",
+                            backgroundColor: "#fff8db",
+                        }).showToast();
+                    } else if(!address || !validMatch ){
+                        Toastify({
+                            text: "Sorry your suburb or postcode are not in our delivery area. Please contact us",
+                            duration: 3000,
+                            gravity: "top",
+                            position: "center",
+                            className: "custom-toast",
+                            backgroundColor: "#fff8db",
+                        }).showToast();
+                    }
                     return false; 
                 } else {
                     const inputs = document.querySelectorAll('.form-control[type="text"], .custom-select');
@@ -1198,6 +1217,8 @@ document.addEventListener('DOMContentLoaded', () =>{
                     return; 
                 }
                 const csrfToken = await getCsrfToken();
+                document.querySelector('.form-btn').style.backgroundColor = '#4c250b';
+
                 fetch('/users/create-account', { 
                     method: 'POST',
                     headers: {
@@ -1217,7 +1238,7 @@ document.addEventListener('DOMContentLoaded', () =>{
                             className: "custom-toast",
                             backgroundColor: "#fff8db",
                         }).showToast();
-                        setTimeout(() => window.location.href = data.redirectURL, 1000);
+                        setTimeout(() => window.location.href = data.redirectURL, 3000);
                     } else {
                         Toastify({
                             text: "This email is already in use. Please try again.",

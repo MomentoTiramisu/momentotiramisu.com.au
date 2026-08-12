@@ -1784,10 +1784,16 @@ input[type="radio"] {
     .progress-step{
         left: calc(var(--step) * (28vw / 3) - 86vw / 6);
     }
+    .nav-list-side {
+        top: -100rem;
+    }
 }
 @media screen and (max-width: 1300px){
     .progress-step{
         left: calc(var(--step) * (26vw / 3) - 81vw / 6);
+    }
+    .nav-list-side {
+        top: -100rem;
     }
     .cart-button{
         width: 28%;
