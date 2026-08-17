@@ -705,6 +705,11 @@ html{
     z-index: 1;
     bottom: 4rem;
 }
+[data-page="home"] .fa-instagram{
+    margin-left: 0;
+    font-size: 3rem;
+    margin-top: 7rem;
+}
 .copyright{
     margin-top: 1rem;
 }
@@ -1782,14 +1787,9 @@ input[type="radio"] {
 
 
 /*RENSPONSIVE*/
-@media screen and (min-width: 2560px){
-    .nav-list-side {
-        top: -125rem;
-    }
-}
 @media screen and (min-width: 1800px){
     .nav-list-side {
-        top: -107rem;
+        top: -130rem;
     }
     .swiper-button-prev {
         left: -15rem;
