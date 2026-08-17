@@ -677,10 +677,6 @@ html{
 }
 .info-paragraph a{
     color: var(--Cornsilk);
-    margin-left: 0.5rem;
-}
-.info-paragraph a:not(:last-child){
-    margin-left: 0.5rem;
 }
 
 /*footer effects*/
