@@ -675,7 +675,7 @@ html{
 .info-paragraph span{
     font-weight: bold;
 }
-.info-paragraph a{
+.info-paragraph a:not(:last-child){
     color: var(--Cornsilk);
     margin-left: 0.5rem;
 }
