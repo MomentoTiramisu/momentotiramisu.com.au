@@ -641,6 +641,7 @@ html{
 .contact-container{
     display: flex;
     justify-content: space-evenly;
+    align-items: center;
     width: 100%;
     height: 75vh;
     padding-top: 15rem;
@@ -1786,6 +1787,21 @@ input[type="radio"] {
         top: -125rem;
     }
 }
+@media screen and (min-width: 1800px){
+    .nav-list-side {
+        top: -107rem;
+    }
+    .swiper-button-prev {
+        left: -15rem;
+    }
+    .swiper-button-next {
+        right: -15rem;
+    }
+    .sliders-container {    
+        width: 55%;
+    }
+}
+
 @media screen and (max-width: 1550px){
     .progress-step{
         left: calc(var(--step) * (28vw / 3) - 86vw / 6);
