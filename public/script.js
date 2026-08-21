@@ -1387,3 +1387,9 @@ document.addEventListener('DOMContentLoaded', () =>{
     }
 })
 
+
+document.addEventListener('click', (e) => {
+    if(e.target && e.target.id === 'home-button'){
+        window.location.href = '/';
+    }
+})
