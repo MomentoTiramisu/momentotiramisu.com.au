@@ -132,7 +132,7 @@ app.get('/auth/status', (req, res) => {
       res.json({loggedIn: false})
     }
   } catch (error){
-    console.log('auth/status error:', error);
+    console.error('auth/status error:', error);
     res.status(500).json({error: error.message});
   }
 })
@@ -192,9 +192,6 @@ app.post('/checkout', checkAuth, requireVerifiedUser, doubleCsrfProtection, asyn
     userId: req.user.id
   });
 
-  console.log("User:", req.user.id);
-  console.log("Details:", details);
-
   try{
     if (token){
       const intTotal = parseFloat(total); 
@@ -208,7 +205,6 @@ app.post('/checkout', checkAuth, requireVerifiedUser, doubleCsrfProtection, asyn
         },        
         locationId: process.env.PRODUCTION_LOCATION_ID, 
       })
-      console.log('payment:', response.payment);
 
       req.session.lastOrder = { 
         orderId: response.payment.orderId,
@@ -746,7 +742,7 @@ app.post('/checkout', checkAuth, requireVerifiedUser, doubleCsrfProtection, asyn
 
     }
   } catch(e){
-    console.log('checkout error:', e);
+    console.error('checkout error:', e);
     res.status(500).json(e.errors)
   }
 }) 
