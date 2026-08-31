@@ -149,7 +149,7 @@ app.post('/upload', upload.single('image'), async (req, res)=>{
     })
   } catch (error) {
       console.error('upload error:', error);
-      res.status(500).json({error: 'upload failed'})
+      res.status(500).json({error: 'upload failed'});
   }
 })
 
@@ -743,7 +743,7 @@ app.post('/checkout', checkAuth, requireVerifiedUser, doubleCsrfProtection, asyn
     }
   } catch(e){
     console.error('checkout error:', e);
-    res.status(500).json(e.errors)
+    res.status(500).json({error: e.message});
   }
 }) 
 

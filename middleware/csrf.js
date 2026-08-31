@@ -8,7 +8,7 @@ const {generateCsrfToken: generateCsrfToken, doubleCsrfProtection: doubleCsrfPro
         sameSite: "strict",
         secure: process.env.NODE_ENV === "production"
     },
-    getTokenFromRequest: req => req.headers["x-csrf-token"]
+    getCsrfTokenFromRequest: req => req.headers["x-csrf-token"]
 });
 
 module.exports = {

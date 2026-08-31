@@ -558,23 +558,20 @@ document.addEventListener('DOMContentLoaded', () =>{
     
         async function initializeSquare() {
             
-        const appIdInput = document.getElementById('appId');
-        const locationIdInput = document.getElementById('locationId');
+            const appIdInput = document.getElementById('appId');
+            const locationIdInput = document.getElementById('locationId');
 
-        if (!appIdInput || !locationIdInput) {
-            console.error("Square initialization failed: Hidden input elements missing from DOM.");
-            return;
-        }
+            if (!appIdInput || !locationIdInput) {
+                console.error("Square initialization failed: Hidden input elements missing from DOM.");
+                return;
+            }
 
-        const appId = appIdInput.value.trim();
-        const locationId = locationIdInput.value.trim();
+            const appId = appIdInput.value.trim();
+            const locationId = locationIdInput.value.trim();
 
-        const payments = await Square.payments(appId, locationId);
+            const payments = await Square.payments(appId, locationId);
 
             let suburbsData = [];
-
-            await loadSuburbsArray();
-            validateSuburb();
 
             const cardOptions = {
                 postalCode: 'false', 
@@ -739,6 +736,8 @@ document.addEventListener('DOMContentLoaded', () =>{
             }
 
             try{
+                await loadSuburbsArray();
+                validateSuburb();
                 const placeOrder = document.querySelector('.place-order');
                 placeOrder.style.display = 'none';
                 const card = await payments.card(cardOptions);
@@ -783,8 +782,7 @@ document.addEventListener('DOMContentLoaded', () =>{
                         }, { once: true, signal });                            
                     });
                     
-
-                    confirmModal.close()
+                    confirmModal.close();
                 })
             
 
@@ -984,8 +982,7 @@ document.addEventListener('DOMContentLoaded', () =>{
             updateButton();
         })
 
-        function updateTotalSquare(){
-           
+        function updateTotalSquare(){ 
             const updateTotal = applyDeliveryFee(); 
             const updateTotalWithFee = parseFloat(updateTotal * 1.022).toFixed(2);
             if(paymentRequest){
