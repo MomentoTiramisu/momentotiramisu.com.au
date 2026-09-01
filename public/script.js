@@ -1,4 +1,3 @@
-const { errorMonitor } = require("nodemailer/lib/xoauth2");
 
 const currentPage = document.body.getAttribute('data-page');
 const textSlider = document.querySelector('.text-slider');
