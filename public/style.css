@@ -703,7 +703,7 @@ html{
     z-index: 1;
     bottom: 4rem;
 }
-[data-page="home"] .fa-instagram{
+[data-page="home"] .info-paragraph .fa-instagram{
     margin-left: 0;
     font-size: 3rem;
     margin-top: 7rem;
