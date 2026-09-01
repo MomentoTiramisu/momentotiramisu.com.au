@@ -1,3 +1,4 @@
+const { errorMonitor } = require("nodemailer/lib/xoauth2");
 
 const currentPage = document.body.getAttribute('data-page');
 const textSlider = document.querySelector('.text-slider');
@@ -65,6 +66,24 @@ document.addEventListener('DOMContentLoaded', () =>{
 
     if(currentPage === 'home'){
         AOS.init();
+
+        const video = document.getElementById('bkgVideo');
+        let isPlaying = true;
+        playVideo();
+
+        window.addEventListener('pageshow', playVideo, { once: true });
+        window.addEventListener('load', playVideo, { once: true });
+
+        function playVideo(){
+            const playPromise = video.play();
+            if(playPromise !== undefined){
+                playPromise.catch(error => {
+                    isPlaying = false;
+                    video.controls = false;
+                    console.error('Video failed to play', error);
+                });
+            }
+        }
 
         const btnContainer =  document.querySelector('.btns-container');
         const btnOne = document.querySelector('.btn-1');
