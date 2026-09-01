@@ -316,6 +316,7 @@ html{
     width: 100%;
     display: flex;
     justify-content: center;
+    gap: 6rem
 }
 .social-media i{
     font-size: 3rem;
