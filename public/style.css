@@ -312,7 +312,7 @@ html{
 
 .social-media{
     position: absolute; /*to move them*/
-    bottom: 5rem;
+    bottom: 10rem;
     width: 100%;
     display: flex;
     justify-content: center;
