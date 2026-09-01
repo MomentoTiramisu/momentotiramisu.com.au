@@ -321,7 +321,6 @@ html{
 .social-media i{
     font-size: 3rem;
     color: var(--Cornsilk);
-    margin: 0 1.5rem;
     transition: all 0.5s;
 }
 
