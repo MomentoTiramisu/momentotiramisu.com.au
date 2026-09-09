@@ -724,7 +724,7 @@ app.post('/checkout', checkAuth, requireVerifiedUser, doubleCsrfProtection, asyn
         transporter.sendMail(mailtoUser, (error, info) => {
             if (error) {
                 console.error("Error occurred:", error);
-            } else {
+            } else if(process.env.NODE_ENV !== 'production'){
                 console.log("Email sent successfully!");
             }
         });
@@ -732,7 +732,7 @@ app.post('/checkout', checkAuth, requireVerifiedUser, doubleCsrfProtection, asyn
         transporter.sendMail(mailtoMomento, (error, info) => {
           if (error) {
               console.error("Error occurred:", error);
-          } else {
+          } else if(process.env.NODE_ENV !== 'production'){
               console.log("Email sent successfully!");
           }
         });

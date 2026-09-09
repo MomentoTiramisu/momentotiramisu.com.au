@@ -163,8 +163,12 @@ router.post('/login', loginLimiter, doubleCsrfProtection, async (request, respon
             });
 
             const redirect = request.body.redirect;
+            const redirectIfUrl = '/cart';
+            const redirectElseUrl = '/online-orders';
+            const rightUrl = (req.session.cart && req.session.cart.length > 0) ? redirectIfUrl : redirectElseUrl;
+
             response.send({
-                redirectURL : redirect ? `/${redirect}` : '/cart', 
+                redirectURL : redirect ? `/${redirect}` : rightUrl, 
                 message : 'Success'
             });
         } else {

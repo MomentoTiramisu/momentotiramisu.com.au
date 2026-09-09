@@ -19,8 +19,8 @@ window.initAddressAutocomplete = function() {
 
     try{ 
         const sydneyBounds = new google.maps.LatLngBounds(
-            new google.maps.LatLng(-33.9700, 150.9200), 
-            new google.maps.LatLng(-33.8300, 151.2800) 
+            new google.maps.LatLng(-33.9850, 150.9300),
+            new google.maps.LatLng(-33.5900, 151.3500)
         );
 
         const options = {
@@ -399,8 +399,6 @@ document.addEventListener('DOMContentLoaded', () =>{
             const block = document.createElement('div');
             block.classList.add('login-container');
 
-            let csrfToken = null;
-
             fetch('/auth/status').then(response => response.json())
             .then(data => { 
                 if(data.loggedIn){
@@ -669,7 +667,7 @@ document.addEventListener('DOMContentLoaded', () =>{
                             className: "custom-toast",
                             backgroundColor: "#fff8db",
                         }).showToast();
-                    } else if(!address || !validMatch ){
+                    } else if(!validMatch){
                         Toastify({
                             text: "Sorry your suburb or postcode are not in our delivery area. Please contact us",
                             duration: 3000,
@@ -1340,7 +1338,6 @@ document.addEventListener('DOMContentLoaded', () =>{
                     }
                 })
                 .catch((err) => {
-                    
                     Toastify({ text: "Failed to reset password. Please try again." }).showToast();
                 });
             if(resetPassword){
