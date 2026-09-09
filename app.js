@@ -32,14 +32,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/.well-known', express.static(path.join(__dirname, '.well-known')));
 app.use(express.json()); 
 
-app.use((req,res,next) => {
-  const array = new Uint8Array(16);
-  globalThis.crypto.getRandomValues(array);
-
-  res.locals.cspNonce = crypto.randomBytes(16).toString('base64');
-  next();
-})
-
 app.use(helmetConfig);
 app.use(cookieParser());
 
