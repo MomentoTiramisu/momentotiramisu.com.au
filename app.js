@@ -32,6 +32,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/.well-known', express.static(path.join(__dirname, '.well-known')));
 app.use(express.json()); 
 
+app.use((req,res,next) => {
+  res.locals.cspNonce = crypto.randomBytes(16).toString('base64');
+  next();
+})
+
 app.use(helmetConfig);
 app.use(cookieParser());
 
