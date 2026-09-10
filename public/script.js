@@ -1202,7 +1202,7 @@ document.addEventListener('DOMContentLoaded', () =>{
 
                 const email = document.querySelector('#register-email').value; 
                 const password = passwordInput.value; 
-                const rePassword = document.querySelector('#register-re-enter-Password').value;
+                const rePassword = document.querySelector('#register-re-enter-password').value;
 
                 if(password !== rePassword) { 
                     const reEnterMsg = document.createElement('h4');
@@ -1274,7 +1274,7 @@ document.addEventListener('DOMContentLoaded', () =>{
         icons[2].classList.toggle('fa-x', !isValidSpecial);
     }
 
-    if(currentPage === 'reset-password'){        
+    if(currentPage === 'reset-password'){
         const toggles = document.querySelectorAll('.toggle-password');
 
         toggles.forEach((toggle) => {  
@@ -1310,16 +1310,17 @@ document.addEventListener('DOMContentLoaded', () =>{
                     document.querySelector('.reset-passw-sign').after(reEnterMsg);
                     return; 
                 }
-                const csrfToken = await getCsrfToken();
-                const response = await fetch(`/users/reset-password/${token}`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-type' : 'application/json',
-                        'x-csrf-token': csrfToken
-                    },
-                    body: JSON.stringify({password: passwordValue})
-                })
-                const data = await response.json();
+                try{
+                    const csrfToken = await getCsrfToken();
+                    const response = await fetch(`/users/reset-password/${token}`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-type' : 'application/json',
+                            'x-csrf-token': csrfToken
+                        },
+                        body: JSON.stringify({password: passwordValue})
+                    })
+                    const data = await response.json();
                     if(response.ok){
                         Toastify({
                             text: "Password changed successfully! Please log in.",
@@ -1336,10 +1337,12 @@ document.addEventListener('DOMContentLoaded', () =>{
                         sorryMsg.textContent = 'Sorry, you have to choose a new password'
                         document.querySelector('.input-container').after(sorryMsg);
                     }
-                })
-                .catch((err) => {
+                } catch(err){
+                    console.error(err);
                     Toastify({ text: "Failed to reset password. Please try again." }).showToast();
-                });
+                }
+            })
+            
             if(resetPassword){
                 resetPassword.addEventListener('input', () => {
                     passwordCheck(resetPassword.value);
