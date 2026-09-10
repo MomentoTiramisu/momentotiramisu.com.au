@@ -1339,10 +1339,17 @@ document.addEventListener('DOMContentLoaded', () =>{
                     }
                 } catch(err){
                     console.error(err);
-                    Toastify({ text: "Failed to reset password. Please try again." }).showToast();
+                    Toastify({ 
+                        text: "Failed to reset password. Please try again.",
+                        duration: 4000,
+                        gravity: "top",
+                        position: "center",
+                        className: "custom-toast",
+                        backgroundColor: "#fff8db",
+                    }).showToast();
                 }
             })
-            
+
             if(resetPassword){
                 resetPassword.addEventListener('input', () => {
                     passwordCheck(resetPassword.value);
