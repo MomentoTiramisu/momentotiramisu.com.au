@@ -651,19 +651,17 @@ html{
 .info{
     color: var(--Cornsilk);
     letter-spacing: 0.2rem;
-    line-height: 1.2;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
 }
 .htitle{
-    margin-bottom: 2rem;
     font-size: 2rem;
 }
 .info-paragraph{
     font-size: 1.8rem;
     line-height: 2.5;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
 }
 .info-paragraph span{
     font-weight: bold;
