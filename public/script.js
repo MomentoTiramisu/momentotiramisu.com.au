@@ -1358,37 +1358,6 @@ document.addEventListener('DOMContentLoaded', () =>{
         }
     }
 
-    const mapElement = document.getElementById('map');  
-    if (mapElement){
-        const position = {
-            name: "Momento",
-            coords: [-33.8693, 151.1295],
-            description: "7/189 Great North Road, Five Dock NSW 2046",
-        }
-
-        const map = L.map('map' ,{
-            minZoom: 10, 
-            maxZoom: 18, 
-            worldCopyJump: false,  
-            dragging: true 
-        }).setView(position.coords, 17);
-        
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; OpenStreetMap contributors', 
-        }).addTo(map);
-
-        const marker = L.marker(position.coords).addTo(map);
-        marker.bindPopup(`<strong>${position.name}</strong><br>${position.description}`, {closeButton: false});
-        
-        marker.on('mouseover', function() {
-            this.openPopup();
-        });
-
-        marker.on('mouseout', function(){
-            this.closePopup();
-        })
-        map.invalidateSize(); 
-    }
 })
 
 
