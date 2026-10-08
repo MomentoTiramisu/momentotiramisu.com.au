@@ -581,13 +581,13 @@ document.addEventListener('DOMContentLoaded', () =>{
             }
 
             const finalTotal = applyDeliveryFee(); 
-
-            const totalWithSquareFee = parseFloat((finalTotal * 1.022).toFixed(2));
+            const totalWithoutSquare = parseFloat((finalTotal).toFixed(2));
+            
             
             async function processPayment(token){
                 const finalTotal = applyDeliveryFee(); 
                 
-                const totalWithSquareFee = parseFloat((finalTotal * 1.022).toFixed(2));
+                const totalWithoutSquare = parseFloat((finalTotal).toFixed(2));
 
                 const deliveryInput = document.querySelector('.delivery input[type="radio"]');
                 const deliveryMethod = deliveryInput && deliveryInput.checked ? 'delivery' : 'pick-up';
@@ -613,7 +613,7 @@ document.addEventListener('DOMContentLoaded', () =>{
                         'Content-type' : 'application/json',
                         'x-csrf-token': csrfToken
                     },
-                    body: JSON.stringify({token, total: totalWithSquareFee}) 
+                    body: JSON.stringify({token, total: totalWithoutSquare}) 
                 }).then((response) => response.json())
                 .then(data => {
                     if(data.payment.status === 'COMPLETED'){
@@ -793,7 +793,7 @@ document.addEventListener('DOMContentLoaded', () =>{
                 
                 paymentRequest = payments.paymentRequest({
                     total: {
-                        amount: String(totalWithSquareFee),
+                        amount: String(totalWithoutSquare),
                         label: 'Total'
                     },
                     countryCode: 'AU',
@@ -982,10 +982,10 @@ document.addEventListener('DOMContentLoaded', () =>{
 
         function updateTotalSquare(){ 
             const updateTotal = applyDeliveryFee(); 
-            const updateTotalWithFee = parseFloat(updateTotal * 1.022).toFixed(2);
+            const totalWithoutSquare = parseFloat(updateTotal).toFixed(2);
             if(paymentRequest){
                 paymentRequest.update({
-                    total: {amount: String(updateTotalWithFee), label: 'Total'}
+                    total: {amount: String(totalWithoutSquare), label: 'Total'}
                 })
             }
         }
